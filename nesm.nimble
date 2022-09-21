@@ -15,7 +15,7 @@ task tests, "Run autotests":
     echo "== Testing target " & target & " =="
     for file in test_files:
       if file.endsWith(".nim"):
-        exec("nim " & target & " --run -d:nimOldCaseObjects -d:debug -o:tmpfile -p:" & thisDir() & " " & file)
+        exec("nim " & target & " --run -d:nimOldCaseObjects -d:debug --gc:refc -o:tmpfile -p:" & thisDir() & " " & file)
         rmFile("tmpfile")
 
 task docs, "Build documentation":
